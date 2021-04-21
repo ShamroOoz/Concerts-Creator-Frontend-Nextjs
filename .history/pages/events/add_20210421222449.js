@@ -30,22 +30,15 @@ export default function AddEventPage() {
 
     if (hasEmptyFields) {
       toast.error("Please fill in all fields");
-      return;
+      return
     }
 
-    const res = await fetch(`${API_URL}/events`, {
+    const res = await fetch(`{API_URL}/events/`{
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(values),
+      body : JSON.stringify(values)
+      
     });
-
-    if (!res.ok) {
-      toast.error("Something Went Wrong");
-      return;
-    } else {
-      const evt = await res.json();
-      router.push(`/events/${evt.slug}`);
-    }
   };
   const handleInputChange = (e) => {
     const { name, value } = e.target;

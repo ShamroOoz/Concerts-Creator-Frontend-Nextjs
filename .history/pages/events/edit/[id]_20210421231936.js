@@ -1,24 +1,20 @@
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
 import Layout from "@/components/Layout";
+import { useState } from "react";
+import Link from "next/link";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
+import moment from "moment";
 
-export default function AddEventPage() {
+export default function EditPage({ evt }) {
   const [values, setValues] = useState({
-    name: "",
-    performers: "",
-    venue: "",
-    address: "",
-    date: "",
-    time: "",
-    description: "",
+    name: evt.name,
+    performers: evt.performers,
+    venue: evt.venue,
+    address: evt.address,
+    date: evt.date,
+    time: evt.time,
+    description: evt.description,
   });
-
-  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,8 +29,8 @@ export default function AddEventPage() {
       return;
     }
 
-    const res = await fetch(`${API_URL}/events`, {
-      method: "POST",
+    const res = await fetch(`${API_URL}/events/${evt.id}`, {
+      method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(values),
     });
@@ -47,16 +43,16 @@ export default function AddEventPage() {
       router.push(`/events/${evt.slug}`);
     }
   };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
 
   return (
-    <Layout title="Add New Event">
+    <Layout title="Edit Event">
       <Link href="/events">Go Back</Link>
-      <h1>Add Event</h1>
-      <ToastContainer />
+      <h1>Edit Event</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.grid}>
           <div>
@@ -105,7 +101,7 @@ export default function AddEventPage() {
               type="date"
               name="date"
               id="date"
-              value={values.date}
+              value={moment(values.date).format("yyyy-MM-DD")}
               onChange={handleInputChange}
             />
           </div>
@@ -136,4 +132,10 @@ export default function AddEventPage() {
       </form>
     </Layout>
   );
+}
+
+export async function getServerSideProps({ params: { id } }) {
+  const res = await fetch(`${API_URL}/events?id=${id}`);
+  const data = await res.json();
+  return { props: { evt: data[0] } };
 }

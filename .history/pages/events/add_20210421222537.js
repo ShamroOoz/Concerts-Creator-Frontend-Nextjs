@@ -33,18 +33,18 @@ export default function AddEventPage() {
       return;
     }
 
-    const res = await fetch(`${API_URL}/events`, {
+    const res = await fetch(`{API_URL}/events/`{
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(values),
+      body : JSON.stringify(values)
+      
     });
-
     if (!res.ok) {
-      toast.error("Something Went Wrong");
+      toast.error('Something Went Wrong')
       return;
     } else {
-      const evt = await res.json();
-      router.push(`/events/${evt.slug}`);
+      const evt = await res.json()
+      router.push(`/events/${evt.slug}`)
     }
   };
   const handleInputChange = (e) => {

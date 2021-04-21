@@ -33,12 +33,11 @@ export default function AddEventPage() {
       return;
     }
 
-    const res = await fetch(`${API_URL}/events`, {
+    const res = await fetch(`{API_URL}/events/`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(values),
     });
-
     if (!res.ok) {
       toast.error("Something Went Wrong");
       return;

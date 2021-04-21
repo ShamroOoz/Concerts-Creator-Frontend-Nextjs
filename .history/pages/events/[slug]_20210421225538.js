@@ -22,7 +22,7 @@ export default function EventPage({ evt }) {
       toast.error(data.message);
       return;
     } else {
-      toast.success("Event Deleted successfully..");
+      toast.success("Event Deleted successfully");
       router.push("/events");
     }
   };
@@ -30,6 +30,7 @@ export default function EventPage({ evt }) {
   return (
     <Layout>
       <h1>My Event</h1>
+      <ToastContainer />
       <div className={styles.event}>
         <div className={styles.controls}>
           <Link href={`/events/edit/${evt.id}`}>
@@ -49,7 +50,6 @@ export default function EventPage({ evt }) {
           {new Date().toLocaleDateString("en-US")} at {evt.time}
         </span>
         <h1>{evt.name}</h1>
-        <ToastContainer />
         {evt.image && (
           <div className={styles.image}>
             <Image src={evt.image.url} width={960} height={600} />

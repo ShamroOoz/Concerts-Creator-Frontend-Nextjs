@@ -22,7 +22,7 @@ export default function EventPage({ evt }) {
       toast.error(data.message);
       return;
     } else {
-      toast.success("Event Deleted successfully..");
+      toast.success("Event Deleted successfully");
       router.push("/events");
     }
   };

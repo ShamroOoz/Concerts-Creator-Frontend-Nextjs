@@ -1,31 +1,28 @@
 import { FaPencilAlt, FaTimes } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
 import styles from "@/styles/Event.module.css";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { NEXT_URL, API_URL } from "@/config/index";
 
 export default function EventPage({ evt }) {
-  const router = useRouter();
-  const deleteEventhandler = async (id) => {
-    if (!confirm("Are you sure?")) {
-      return;
-    }
-    const res = await fetch(`${API_URL}/events/${id}`, {
-      method: "DELETE",
-    });
-    const data = res.json();
-    if (!res.ok) {
-      toast.error(data.message);
-      return;
-    } else {
-      toast.success("Event Deleted successfully..");
-      router.push("/events");
-    }
+  const deleteEventhandler = async (e) => {
+    console.log(evt);
   };
+  //   if (!confirm("Are you sure?")) {
+  //     return;
+  //   }
+  //   const res = await fetch(`${API_URL}/events/${evt.id}`, {
+  //     method: "DELETE",
+  //   });
+  //   const evt = res.json();
+  //   if (!res.ok) {
+  //     toast.error(data.message);
+  //     return;
+  //   } else {
+  //     router.push("/events");
+  //   }
+  // };
 
   return (
     <Layout>
@@ -37,10 +34,7 @@ export default function EventPage({ evt }) {
               <FaPencilAlt /> Edit Event
             </a>
           </Link>
-          <a
-            className={styles.delete}
-            onClick={() => deleteEventhandler(evt.id)}
-          >
+          <a href="#" className={styles.delete} onClick={deleteEventhandler}>
             <FaTimes /> Delete Event
           </a>
         </div>
@@ -49,7 +43,6 @@ export default function EventPage({ evt }) {
           {new Date().toLocaleDateString("en-US")} at {evt.time}
         </span>
         <h1>{evt.name}</h1>
-        <ToastContainer />
         {evt.image && (
           <div className={styles.image}>
             <Image src={evt.image.url} width={960} height={600} />
