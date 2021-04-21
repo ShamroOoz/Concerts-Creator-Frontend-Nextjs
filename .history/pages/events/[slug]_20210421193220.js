@@ -22,7 +22,7 @@ export default function EventPage({ evt }) {
         </div>
 
         <span>
-          {new Date().toLocaleDateString("en-US")} at {evt.time}
+          {evt.date} at {evt.time}
         </span>
         <h1>{evt.name}</h1>
         {evt.image && (
@@ -60,5 +60,6 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   const res = await fetch(`${API_URL}/events?slug=${slug}`);
   const data = await res.json();
+  console.log(data);
   return { props: { evt: data[0] }, revalidate: 1 };
 }

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Layout from "@/components/Layout";
 import styles from "@/styles/Event.module.css";
 import { NEXT_URL, API_URL } from "@/config/index";
+import Moment from 'react-moment'
 
 export default function EventPage({ evt }) {
   return (
@@ -22,7 +23,8 @@ export default function EventPage({ evt }) {
         </div>
 
         <span>
-          {new Date().toLocaleDateString("en-US")} at {evt.time}
+          <Moment date={evt.date} />
+          { at {evt.time}
         </span>
         <h1>{evt.name}</h1>
         {evt.image && (

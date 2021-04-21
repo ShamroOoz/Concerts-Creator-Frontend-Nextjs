@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Layout from "@/components/Layout";
 import styles from "@/styles/Event.module.css";
-import { NEXT_URL, API_URL } from "@/config/index";
+import { NEXT_URL } from "@/config/index";
 
 export default function EventPage({ evt }) {
   return (
@@ -22,12 +22,12 @@ export default function EventPage({ evt }) {
         </div>
 
         <span>
-          {new Date().toLocaleDateString("en-US")} at {evt.time}
+          {evt.date} at {evt.time}
         </span>
         <h1>{evt.name}</h1>
         {evt.image && (
           <div className={styles.image}>
-            <Image src={evt.image.url} width={960} height={600} />
+            <Image src={evt.image} width={960} height={600} />
           </div>
         )}
 
@@ -47,7 +47,7 @@ export default function EventPage({ evt }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(`${API_URL}/events`);
+  const res = await fetch(`${NEXT_URL}/api/events`);
   const posts = await res.json();
 
   const paths = posts.map((post) => ({
@@ -58,7 +58,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const res = await fetch(`${API_URL}/events?slug=${slug}`);
-  const data = await res.json();
+  const res = await fetch(`${NEXT_URL}/api/events/${slug}`);
+  const { data } = await res.json();
   return { props: { evt: data[0] }, revalidate: 1 };
 }
