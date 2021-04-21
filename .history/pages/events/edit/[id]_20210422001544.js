@@ -159,9 +159,7 @@ export default function EditPage({ evt }) {
         </button>
       </div>
 
-      <Modal show={showModal} onClose={() => setShowModal(false)}>
-        <div>This is modal</div>
-      </Modal>
+      <Modal show={showModal} onClose={() => setShowModal(false)} />
     </Layout>
   );
 }

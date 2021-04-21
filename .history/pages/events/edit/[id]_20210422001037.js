@@ -1,5 +1,4 @@
 import Layout from "@/components/Layout";
-import Modal from "@/components/Modal";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -159,9 +158,7 @@ export default function EditPage({ evt }) {
         </button>
       </div>
 
-      <Modal show={showModal} onClose={() => setShowModal(false)}>
-        <div>This is modal</div>
-      </Modal>
+      <Modal show={showModal} onClose={() => setShowModal(false)} />
     </Layout>
   );
 }
