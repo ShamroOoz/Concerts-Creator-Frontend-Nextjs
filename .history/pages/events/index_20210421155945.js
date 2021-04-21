@@ -5,6 +5,7 @@ import EventItem from "@/components/EventItem";
 export default function EventsPage({ data }) {
   return (
     <Layout>
+      <h1>My Events</h1>
       <h1>Events</h1>
       {data.length === 0 && <h3>No events to show</h3>}
 

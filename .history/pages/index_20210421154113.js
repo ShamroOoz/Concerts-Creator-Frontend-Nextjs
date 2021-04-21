@@ -1,16 +1,10 @@
 import Layout from "@/components/Layout";
 import { NEXT_URL } from "@/config/index";
-import EventItem from "@/components/EventItem";
 
-export default function EventsPage({ data }) {
+export default function Home({ data }) {
   return (
     <Layout>
-      <h1>Events</h1>
-      {data.length === 0 && <h3>No events to show</h3>}
-
-      {data.map((evt) => (
-        <EventItem key={evt.id} evt={evt} />
-      ))}
+      <h1>Home</h1>
     </Layout>
   );
 }

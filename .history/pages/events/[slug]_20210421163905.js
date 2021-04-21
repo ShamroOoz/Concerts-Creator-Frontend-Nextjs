@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Layout from "@/components/Layout";
 import styles from "@/styles/Event.module.css";
-import { NEXT_URL } from "@/config/index";
 
 export default function EventPage({ evt }) {
   return (
