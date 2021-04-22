@@ -1,4 +1,4 @@
-import { events } from "./data.json";
+import { events } from "../data.json";
 
 export default (req, res) => {
   if (req.method !== "GET") {

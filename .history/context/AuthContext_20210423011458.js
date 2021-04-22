@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
 
   // Login user
   const login = async ({ email: identifier, password }) => {
+    console.log({ identifier, password });
     const res = await fetch(`${NEXT_URL}/api/login`, {
       method: "POST",
       headers: {
@@ -31,30 +32,19 @@ export const AuthProvider = ({ children }) => {
 
     const data = await res.json();
 
+    console.log(data);
+
     if (res.ok) {
       setUser(data.user);
-      router.push("/account/dashboard");
     } else {
       setError(data.message);
       setError(null);
     }
   };
 
-  //logout
-  const logout = async (user) => {
-    console.log(user);
-  };
-
   // Check if user is logged in
   const checkUserLoggedIn = async (user) => {
-    const res = await fetch(`${NEXT_URL}/api/user`);
-    const data = await res.json();
-
-    if (res.ok) {
-      setUser(data.user);
-    } else {
-      setUser(null);
-    }
+    console.log("Check");
   };
 
   return (

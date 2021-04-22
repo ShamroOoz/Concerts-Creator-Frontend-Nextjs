@@ -174,9 +174,8 @@ export default function EditPage({ evt }) {
   );
 }
 
-export async function getServerSideProps({ params: { id }, req }) {
+export async function getServerSideProps({ params: { id } }) {
   const res = await fetch(`${API_URL}/events?id=${id}`);
-  console.log(req.headers.cookie);
   const data = await res.json();
   return { props: { evt: data[0] } };
 }
