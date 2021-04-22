@@ -2,11 +2,11 @@ import Link from "next/link";
 import styles from "../styles/Header.module.css";
 import Search from "./Search";
 import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
-import { useContext } from "react";
+import { useContext } from 'react'
 import AuthContext from "@/context/AuthContext";
 
 export default function Header() {
-  const { user, logout } = useContext(AuthContext);
+   const { user, logout } = useContext(AuthContext);
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
