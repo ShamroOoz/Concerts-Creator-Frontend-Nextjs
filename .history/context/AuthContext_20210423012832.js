@@ -56,16 +56,9 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Logout user
-  const logout = async () => {
-    const res = await fetch(`${NEXT_URL}/api/logout`, {
-      method: "POST",
-    });
-
-    if (res.ok) {
-      setUser(null);
-      router.push("/");
-    }
+  //logout
+  const logout = async (user) => {
+    console.log(user);
   };
 
   // Check if user is logged in
