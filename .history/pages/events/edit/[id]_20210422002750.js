@@ -62,13 +62,6 @@ export default function EditPage({ evt }) {
     setValues({ ...values, [name]: value });
   };
 
-  const imageUploaded = async (e) => {
-    const res = await fetch(`${API_URL}/events/${evt.id}`);
-    const data = await res.json();
-    setImagePreview(data.image.formats.thumbnail.url);
-    setShowModal(false);
-  };
-
   return (
     <Layout title="Edit Event">
       <Link href="/events">Go Back</Link>

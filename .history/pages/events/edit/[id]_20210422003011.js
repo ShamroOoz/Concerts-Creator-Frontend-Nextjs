@@ -61,11 +61,13 @@ export default function EditPage({ evt }) {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
-
-  const imageUploaded = async (e) => {
-    const res = await fetch(`${API_URL}/events/${evt.id}`);
-    const data = await res.json();
-    setImagePreview(data.image.formats.thumbnail.url);
+  const imageUploaded = async () => {
+    const res = await fetch(`${API_URL}/upload`, {
+      method: "GET",
+      body: formData,
+    });
+    const evt = res.json();
+    setImagePreview(evt.image.format.thumnail.url);
     setShowModal(false);
   };
 

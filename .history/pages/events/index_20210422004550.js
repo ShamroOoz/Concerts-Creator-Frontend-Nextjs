@@ -1,9 +1,8 @@
 import Layout from "@/components/Layout";
-import Pagination from "@/components/Pagination";
 import { NEXT_URL, API_URL, PER_PAGE } from "@/config/index";
 import EventItem from "@/components/EventItem";
 
-export default function EventsPage({ data, page, total }) {
+export default function EventsPage({ data }) {
   return (
     <Layout>
       <h1>Events</h1>
@@ -12,8 +11,6 @@ export default function EventsPage({ data, page, total }) {
       {data.map((evt) => (
         <EventItem key={evt.id} evt={evt} />
       ))}
-
-      <Pagination page={page} total={total} />
     </Layout>
   );
 }

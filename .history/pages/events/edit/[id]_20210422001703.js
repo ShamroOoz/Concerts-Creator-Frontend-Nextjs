@@ -1,6 +1,5 @@
 import Layout from "@/components/Layout";
 import Modal from "@/components/Modal";
-import ImageUpload from "@/components/ImageUpload";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -60,13 +59,6 @@ export default function EditPage({ evt }) {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
-  };
-
-  const imageUploaded = async (e) => {
-    const res = await fetch(`${API_URL}/events/${evt.id}`);
-    const data = await res.json();
-    setImagePreview(data.image.formats.thumbnail.url);
-    setShowModal(false);
   };
 
   return (
@@ -168,7 +160,7 @@ export default function EditPage({ evt }) {
       </div>
 
       <Modal show={showModal} onClose={() => setShowModal(false)}>
-        <ImageUpload imageUploaded={imageUploaded} evtId={evt.id} />
+        <div>This is modal</div>
       </Modal>
     </Layout>
   );
