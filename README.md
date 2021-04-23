@@ -9,10 +9,10 @@ npm rum DEV
 
 ## Packages
 
-1. Frontend with react and following packages
+1. Frontend with Next JS and following packages
 
    - Html && Css
-   - React-icons
+   - React-Icons
    - React-Toastify
 
 2. Backend is in Strapi
