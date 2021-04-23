@@ -57,6 +57,7 @@ export default function EditEventPage({ evt, token }) {
         toast.error("Unauthorized");
         return;
       }
+
       toast.error("Something Went Wrong");
       return;
     } else {
