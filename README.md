@@ -19,10 +19,8 @@ npm rum DEV
 
 ## Deployment
 
-- Backend is in Strapi live at Heroku....
-
 ```
-Backend -->   (https://concert-creator-backend.herokuapp.com/)
+Backend  is deploy at  Heroku [api](https://concert-creator-backend.herokuapp.com/).
 
- Forntend -->  (https://concerts-creator-frontend-nextjs.vercel.app/)
+Forntend is deploy at  Vercel [App](https://concerts-creator-frontend-nextjs.vercel.app/|)
 ```
