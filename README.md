@@ -14,6 +14,8 @@ npm rum DEV
    - Html && Css
    - React-icons
    - React-Toastify
+   - Cookie-Persist User
+   - Context Api
 
 2. Backend is in Strapi
    Runing at ---
