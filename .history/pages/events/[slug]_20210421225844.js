@@ -9,10 +9,42 @@ import "react-toastify/dist/ReactToastify.css";
 import { NEXT_URL, API_URL } from "@/config/index";
 
 export default function EventPage({ evt }) {
+  const router = useRouter();
+  const deleteEventhandler = async (id) => {
+    if (!confirm("Are you sure?")) {
+      return;
+    }
+    const res = await fetch(`${API_URL}/events/${id}`, {
+      method: "DELETE",
+    });
+    const data = res.json();
+    if (!res.ok) {
+      toast.error(data.message);
+      return;
+    } else {
+      toast.success("Event Deleted successfully..");
+      router.push("/events");
+    }
+  };
+
   return (
     <Layout>
       <h1>My Event</h1>
       <div className={styles.event}>
+        <div className={styles.controls}>
+          <Link href={`/events/edit/${evt.id}`}>
+            <a>
+              <FaPencilAlt /> Edit Event
+            </a>
+          </Link>
+          <a
+            className={styles.delete}
+            onClick={() => deleteEventhandler(evt.id)}
+          >
+            <FaTimes /> Delete Event
+          </a>
+        </div>
+
         <span>
           {new Date().toLocaleDateString("en-US")} at {evt.time}
         </span>

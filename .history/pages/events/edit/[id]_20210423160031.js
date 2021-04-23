@@ -12,6 +12,7 @@ import { FaImage } from "react-icons/fa";
 import { parseCookies } from "@/helpers/index";
 
 export default function EditEventPage({ evt, token }) {
+  console.log(evt, token);
   const [values, setValues] = useState({
     name: evt.name,
     performers: evt.performers,

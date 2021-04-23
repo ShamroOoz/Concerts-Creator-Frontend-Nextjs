@@ -12,6 +12,7 @@ import { FaImage } from "react-icons/fa";
 import { parseCookies } from "@/helpers/index";
 
 export default function EditEventPage({ evt, token }) {
+  console.log(evt, oken);
   const [values, setValues] = useState({
     name: evt.name,
     performers: evt.performers,
@@ -195,7 +196,7 @@ export async function getServerSideProps({ params: { id }, req }) {
 
   return {
     props: {
-      evt: evt[0],
+      evt,
       token,
     },
   };

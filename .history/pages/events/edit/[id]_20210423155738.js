@@ -195,7 +195,7 @@ export async function getServerSideProps({ params: { id }, req }) {
 
   return {
     props: {
-      evt: evt[0],
+      evt,
       token,
     },
   };
