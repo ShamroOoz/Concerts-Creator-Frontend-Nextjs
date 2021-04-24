@@ -1,14 +1,14 @@
-import { FaPencilAlt, FaTimes } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
 import styles from "@/styles/Event.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { NEXT_URL, API_URL } from "@/config/index";
+import Skeleton from "@/components/Skeleton";
 
 export default function EventPage({ evt }) {
+  if (!evt) return <Skeleton />;
   return (
     <Layout>
       <h1>My Event</h1>
@@ -47,11 +47,20 @@ export async function getStaticPaths() {
     params: { slug: post.slug },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params: { slug } }) {
   const res = await fetch(`${API_URL}/events?slug=${slug}`);
   const data = await res.json();
+
+  if (!data.length) {
+    return {
+      redirect: {
+        destination: "/events",
+        permanent: false,
+      },
+    };
+  }
   return { props: { evt: data[0] }, revalidate: 1 };
 }
