@@ -19,8 +19,16 @@ npm rum DEV
 
 ## Deployment
 
+<<<<<<< HEAD
 ```
 Backend  is deploy at  Heroku [api](https://concert-creator-backend.herokuapp.com).
 
 Forntend is deploy at  Vercel [App](https://concerts-creator-frontend-nextjs.vercel.app)
 ```
+=======
+
+Backend  is deploy at  Heroku [api](https://concert-creator-backend.herokuapp.com/)
+
+Forntend is deploy at  Vercel [App](https://concerts-creator-frontend-nextjs.vercel.app)
+
+>>>>>>> 75ec8f4f7825de7d900f2ac67325759c3fdfd0fa
